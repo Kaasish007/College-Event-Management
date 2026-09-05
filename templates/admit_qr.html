@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Admit by QR Code</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+    <span class="website-title neon">PSG TECH Event Management</span>
+</header>
+<div class="sidebar">
+  <ul>
+    <li><a href="{{ url_for('dashboard') }}"><strong>Dashboard</strong></a></li>
+    <li><a href="{{ url_for('admin_events') }}"><strong>Events</strong></a></li>
+    <li><a href="{{ url_for('logout') }}"><strong>Logout</strong></a></li>
+  </ul>
+</div>
+<div class="container fadeInUp">
+  <h2 class="section-title neon">Admit Student</h2>
+  <div class="record-card">
+    <strong>Event:</strong> {{ event.title }}<br>
+    <strong>Name:</strong> {{ student.name }}<br>
+    <strong>Roll Number:</strong> {{ student.rollno }}<br>
+  </div>
+  <form method="POST">
+    <button class="purple-btn" type="submit">Admit</button>
+  </form>
+</div>
+</body>
+</html>

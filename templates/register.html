@@ -1,0 +1,26 @@
+<header class="header">
+  ... logo & title ...
+</header>
+<div class="container fadeInUp">
+  <form method="POST">
+    <label>Username</label>
+    <input type="text" name="username" required>
+    <label>Password</label>
+    <input type="password" name="password" required>
+    <label>Role</label>
+    <select name="role">
+      <option value="student">Student</option>
+      <option value="admin">Admin</option>
+    </select>
+    <!-- If Student: show student fields. If Admin: show admin fields. Handle on backend or use JS toggle -->
+    <button type="submit">Register</button>
+    <a class="link-btn" href="{{ url_for('login') }}">Back to login</a>
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="message error">
+        {% for message in messages %}{{ message }}<br>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</div>

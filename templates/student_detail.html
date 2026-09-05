@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Student Details</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+    <span class="website-title hide-header">PSG TECH College Event Management System, Coimbatore</span>
+</header>
+<div class="main-content">
+  <h2 class="section-title">Student Details</h2>
+  <div class="record-card">
+    <strong>Name:</strong> {{ student.name }}<br>
+    <strong>Roll Number:</strong> {{ student.rollno }}<br>
+    <strong>Email:</strong> {{ student.email }}<br>
+    <strong>Phone:</strong> {{ student.phone }}<br>
+    <strong>Department:</strong> {{ student.department }}<br>
+    <strong>Branch:</strong> {{ student.branch }}<br>
+    <strong>Batch:</strong> {{ student.batch }}<br>
+    <strong>DOB:</strong> {{ student.dob }}<br>
+    <strong>Age:</strong> {{ student.age }}
+  </div>
+  <h3>Change Student Password:</h3>
+  <form method="POST" action="{{ url_for('change_student_password', student_id=student.id) }}">
+    <input type="password" name="new_password" placeholder="New password" required>
+    <button class="search-btn" type="submit">Change Password</button>
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="message error">
+        {% for message in messages %}{{ message }}<br>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</div>
+</body>
+</html>

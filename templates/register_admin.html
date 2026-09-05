@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register Admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+  <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+  <span class="website-title neon">PSG TECH Event Management</span>
+</header>
+<div class="container fadeInUp" style="text-align:center;">
+  <h2 class="section-title neon">Admin Registration</h2>
+  <form method="POST">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="text" name="staffid" placeholder="Staff ID" required>
+    <input type="date" name="dob" placeholder="Date of Birth" required>
+    <input type="text" name="department" placeholder="Department" required>
+    <input type="number" name="years_experience" placeholder="Years Experience" min="0" required>
+    <button type="submit" class="purple-btn">Register</button>
+  </form>
+</div>
+</body>
+</html>

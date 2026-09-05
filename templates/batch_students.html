@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Batch Students</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+    <span class="website-title hide-header">PSG TECH College Event Management System, Coimbatore</span>
+</header>
+<div class="main-content">
+  <h2 class="section-title">Students in Batch: {{ batch }}</h2>
+  {% for stu in students %}
+    <a href="{{ url_for('student_detail', student_id=stu.id) }}">
+      <div class="record-card">
+        <strong>Name:</strong> {{ stu.name }}
+        <strong> | Roll No:</strong> {{ stu.rollno }} | <strong>Branch:</strong> {{ stu.branch }}
+      </div>
+    </a>
+  {% endfor %}
+</div>
+</body>
+</html>

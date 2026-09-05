@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Role Selection - College Event Management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container fadeInUp" style="text-align:center; margin-top: 45px;">
+    <div class="heading-top">PSG College of Technology, Coimbatore</div>
+    <div class="welcome-title">Welcome to College Event Management</div>
+    <form method="POST" action="{{ url_for('choose_role') }}">
+      <button type="submit" name="role" value="admin" class="role-btn">
+        Admin <span class="dot-icon">▶</span>
+      </button>
+      <br>
+      <button type="submit" name="role" value="student" class="role-btn">
+        Student <span class="dot-icon">▶</span>
+      </button>
+    </form>
+  </div>
+</body>
+</html>

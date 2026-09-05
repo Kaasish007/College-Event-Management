@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><title>Settings</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+    <span class="website-title neon">PSG TECH Event Management</span>
+</header>
+<div class="sidebar">
+  <ul>
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    {% if user.role == "admin" %}
+      <li><a href="{{ url_for('access_students') }}">Access Students</a></li>
+      <li><a href="{{ url_for('admin_events') }}">Events</a></li>
+    {% endif %}
+    <li><a href="{{ url_for('settings') }}">Settings</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  </ul>
+</div>
+<div class="container fadeInUp">
+  <h2 class="section-title neon">Update Personal Information</h2>
+  <form method="POST">
+    <label>Name</label>
+    <input type="text" name="name" value="{{ user.name }}" required>
+    <label>Phone</label>
+    <input type="text" name="phone" value="{{ user.phone }}" required>
+    <label>Email</label>
+    <input type="email" name="email" value="{{ user.email }}" required>
+    <label>Date of Birth</label>
+    <input type="date" name="dob" value="{{ user.dob }}" required>
+    {% if user.role == "student" %}
+      <label>Branch</label>
+      <input type="text" name="branch" value="{{ user.branch }}" required>
+      <label>Batch</label>
+      <input type="text" name="batch" value="{{ user.batch }}" required>
+    {% endif %}
+    {% if user.role == "admin" %}
+      <label>Change Password</label>
+      <input type="password" name="new_password" placeholder="Enter new password (optional)">
+    {% endif %}
+    <button type="submit" class="purple-btn">Update</button>
+  </form>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class="message error">
+        {% for message in messages %}{{ message }}<br>{% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</div>
+</body>
+</html>

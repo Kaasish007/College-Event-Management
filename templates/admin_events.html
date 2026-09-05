@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Events</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+  <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+  <span class="website-title neon">PSG TECH Event Management</span>
+</header>
+<div class="sidebar">
+  <ul>
+    <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('access_students') }}">Access Students</a></li>
+    <li><a href="{{ url_for('admin_events') }}">Events</a></li>
+    <li><a href="{{ url_for('host_event') }}">Host Event</a></li>
+    <li><a href="{{ url_for('inbox') }}">Inbox</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+  </ul>
+</div>
+<div class="main-content">
+  <h2 class="section-title">All Events</h2>
+  {% for event in events %}
+    <div class="event-row">
+      <img src="{{ url_for('static', filename=event.logo) }}" style="width:70px;">
+      <strong>{{ event.title }}</strong> | Theme: {{ event.theme }} | 
+      Type: {{ event.event_type }} | Start Date: {{ event.start_date }}
+      <div><strong>Days:</strong> {{ event.num_days }} | 
+      <strong>Students Allowed:</strong> {{ event.students_allowed }} | 
+      <strong>Volunteers:</strong> {{ event.volunteers_required }}</div>
+    </div>
+  {% endfor %}
+</div>
+</body>
+</html>

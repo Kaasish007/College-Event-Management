@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="header">
+    <img src="{{ url_for('static', filename='psgtech_logo.png') }}" alt="PSG Tech Logo" class="logo-img">
+    <span class="website-title">PSG TECH College Event Management System, Coimbatore</span>
+</header>
+<div class="container fadeInUp" style="margin-top:60px;">
+    <h2>Admin Verification</h2>
+    <form method="POST" action="{{ url_for('admin_verify') }}">
+        <label>Enter Verification Code:</label>
+        <input type="password" name="code" placeholder="Type code here" required>
+        <button type="submit">Verify</button>
+    </form>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="message error">
+                {% for message in messages %}{{ message }}<br>{% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+</div>
+</body>
+</html>

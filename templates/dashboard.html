@@ -1,0 +1,31 @@
+<header class="header">
+  <img src="{{ url_for('static', filename='psgtech_logo.png') }}" class="logo-img">
+  <span class="website-title neon">PSG TECH Event Management</span>
+</header>
+<div class="sidebar"> ... </div>
+<div class="main-content">
+  <h1 class="dash-title neon">{{ user.role|capitalize }} Dashboard</h1>
+  {% if user.role == "admin" %}
+    <img src="{{ url_for('static', filename='admin_avatar.png') }}" class="profile-img">
+  {% else %}
+    <img src="{{ url_for('static', filename='student_avatar.png') }}" class="profile-img">
+  {% endif %}
+  <span class="profile-name">{{ user.name }}</span>
+  <!-- Leaderboard -->
+  <div class="leaderboard-section">
+    <img src="{{ url_for('static', filename='leaderboard.png') }}" style="width:30px;">
+    <span class="section-title">Participation Leaderboard</span>
+    <table class="leaderboard-table">
+      <tr><th>Rank</th><th>Name</th><th>Events</th></tr>
+      {% for rank, (stu, cnt) in enumerate(participation_leaders, 1) %}
+      <tr><td>{{ rank }}</td><td>{{ stu.name }}</td><td>{{ cnt }}</td></tr>{% endfor %}
+    </table>
+    <span class="section-title">Volunteer Leaderboard</span>
+    <table class="leaderboard-table">
+      <tr><th>Rank</th><th>Name</th><th>Volunteered Events</th></tr>
+      {% for rank, (stu, cnt) in enumerate(volunteer_leaders, 1) %}
+      <tr><td>{{ rank }}</td><td>{{ stu.name }}</td><td>{{ cnt }}</td></tr>{% endfor %}
+    </table>
+  </div>
+  <!-- Event and Registration display continues as in your template -->
+</div>
